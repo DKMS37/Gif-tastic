@@ -4,21 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Giftstic</title>
+    <title>Giftastic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <style type="text/css">
+        button,
+        div,
+        form,
+        input {
+          margin-right: 10px;
+          margin-left: 10px;
+          margin-bottom: 15px;
+         
+        }
+      </style>
 </head>
 <body>
-    <div class="container">
-         <div id="animal-button">
+    <div class="container jumbotron">
+        <h2 class="text-center" style="color:crimson">Giphy Animal Search</h2>
+        <span class="text-center"><h5 style="color:coral">"Welcome to the Jungle!!!"</h5></span>
+         <div id="animal-button" style="color:chartreuse">
         </div>
 
         <form id="animal-form">
-          <label for="animal-input">Add an Animal</label>
+          <label for="animal-input"><h5 style="color:blue">Add an Animal</h5></label>
           <input type=" text" id="animal-input"><br>
 
-          <input id="add-animal" type="submit" value="SUBMIT">
+          <input id="add-animal" type="submit" value="SUBMIT" style="color:green">
        </form>
 
-       <div id="animals">
+       <div class="row" id="animals" style="color:salmon">
+           <div class= "col-md-3 img-fluid text-center">
+
+           </div>
        </div>
     
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -33,9 +50,20 @@
                 url: queryUrl,
                 method: "GET"
              }).then(function(response){
-                $("#animals").text(response);
-               console.log(response);
+           
                var results = response.data;
+               
+               for (var i = 0; i < results.length; i++){
+               var p = $("<h4>").text("Rated: " + results[i].rating);
+               var topicsDiv = $("<div class= 'row'>").addClass("col-md-3 img-fluid text-center");
+               var topicImage = $("<img>");
+               topicImage.attr("src", results[i].images.fixed_height_small.url);
+               topicsDiv.append(p, topicImage);
+
+
+              $("#animals").append(topicsDiv);
+              }
+
              });
         }
 
@@ -49,12 +77,20 @@
             $("#animals").append(a);
             }
         }
+        $(document).ready(function(){
         $("#add-animal").on("click", function(event){
             event.preventDefault();
             var topic = $("#animal-input").val().trim();
             topics.push(topic);
-        })
+            renderButtons();
+            $("#animal-input").val("");
+
+        });   
+        });
+        $(document).on("click", ".topic-btn", displayGif);
         renderButtons();
+        
+        
      </script>  
     </div>  
 </body>
