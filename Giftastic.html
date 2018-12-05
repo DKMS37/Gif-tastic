@@ -23,9 +23,38 @@
     
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      <script type="text/javascript">
+        
+        var topics = ["dog", "cat", "rabbit", "hamster", "skunk", "goldfish", "bird", "turtle", "chicken", "frog"];
 
+        function displayGif(){
+            var topic = $(this).attr("data-topic");
+            var queryUrl = "https://api.giphy.com/v1/gifs/search?q="+ topic + "&api_key=5ffwOLmeVyAVhjajRATByebPgTsf0p7W&limit=10";
+            $.ajax({
+                url: queryUrl,
+                method: "GET"
+             }).then(function(response){
+                $("#animals").text(response);
+               console.log(response);
+               var results = response.data;
+             });
+        }
 
-
+        function renderButtons(){
+            $("#animal-button").empty();
+            for (var i =0; i < topics.length; i++){
+            var a =$("<button>");
+            a.addClass("topic-btn");
+            a.attr("data-topic",topics[i]);
+            a.text(topics[i]);
+            $("#animals").append(a);
+            }
+        }
+        $("#add-animal").on("click", function(event){
+            event.preventDefault();
+            var topic = $("#animal-input").val().trim();
+            topics.push(topic);
+        })
+        renderButtons();
      </script>  
     </div>  
 </body>
