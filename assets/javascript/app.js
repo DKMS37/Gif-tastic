@@ -1,5 +1,5 @@
 // This is the array of the topics.
-var topics = ["fish", "cat", "turtle", "dog", "pigeon", "mouse"];
+var topics = ["rabbit", "cat", "hamster", "dog", "pigeon", "lion", "panda", "bear", "turtle", "tiger", "whale", "elephant", "racoon", "goat"];
 // Function that renders the Html to diplay the Appropriate content.
 function displayGif() {
     var topic = $(this).attr("data-topic");
@@ -56,7 +56,6 @@ function renderButtons() {
     // Deleting the buttons prior to adding new topic
     // (this is necessary otherwise you will have repeat buttons)
     $("#animal-button").empty();
-    event.preventDefault();
     // Looping through the array of topics.
     for (var i = 0; i < topics.length; i++) {
         // Then dynamically generating buttons for each topic in the array.
@@ -74,15 +73,16 @@ function renderButtons() {
 }
 $(document).ready(function () {
     // This function handles events where one button is clicked.
-    $("#add-animal").on("click", function(event) {
+    $("#add-animal").on("click", function (event) {
         event.preventDefault();
         // This line grabs the input from the textbox
         var topic = $("#animal-input").val().trim();
-        topics.push(topic);
-        // Calling the renderButtons function to display the initial buttons.
-        renderButtons();
-        $("#animal-input").val("");
-
+        if (topic !== "" && topics.indexOf(topic) === -1) {
+            topics.push(topic);
+            // Calling the renderButtons function to display the initial buttons.
+            renderButtons();
+            $("#animal-input").val("");
+        }
     });
 });
 $(document).on("click", ".topic-btn", displayGif);
