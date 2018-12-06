@@ -1,35 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Giftastic</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <style>
+        body {background-image: url(https://tatica.fedorapeople.org/Themes/F12/wallpaper-mosaico2.svg)}
+    </style>
 </head>
+
 <body>
-    <div class="container jumbotron">
-        <h2 class="text-center" style="color:crimson">Giphy Animal Search</h2>
-        <span class="text-center"><h5 style="color:coral">"Welcome to the Jungle!!!"</h5></span>
-         <div id="animal-button" style="color:chartreuse">
+
+    <div class="jumbotron">
+        <h1 class="text-center" style="color:crimson">GIPHY Animal Search</h1>
+        <span class="text-center">
+            <h5 style="color:coral">"Welcome to the Jungle!!!"</h5>
+        </span>
+    </div>
+    <div class="container">
+
+        <div id="animal-button">
+        </div>
+        <div class="col-md-6">
+            <form>
+                <label class="animal-input">
+                    <h4 style="color:chartreuse">Add an Animal here ></h4>
+                </label>
+                <input type="text" id="animal-input"><br>
+
+                <input id="add-animal" type="submit" value="SUBMIT" style="color:green">
+            </form>
         </div>
 
-        <form id="animal-form">
-          <label for="animal-input"><h5 style="color:blue">Add an Animal</h5></label>
-          <input type=" text" id="animal-input"><br>
+        <div class="row" id="animals" style="color:salmon">
+            <div class="col-md-2 img-fluid pull-left text-center">
 
-          <input id="add-animal" type="submit" value="SUBMIT" style="color:green">
-       </form>
+            </div>
+        </div>
+        <hr>
 
-       <div class="row" id="animals" style="color:salmon">
-           <div class= "col-md-3 img-fluid text-center">
+        <footer class="text-center">
+            <span class="text-center fas fa-crown">
+                <p style="font-weight:bold; color:darkorange">-Sangalang D-King Copyright 2018 &copy;-</p>
+                <span id="copyright-small" class="text-muted"><text style="color:bisque">Images and logo are the
+                        property of their respective owners.</text></span>
+            </span>
+        </footer>
 
-           </div>
-       </div>
-    
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <script type="text/javascript" src= "assets/javascript/app.js"></script>
-    </div>  
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/javascript/app.js"></script>
+    </div>
 </body>
+
 </html>
