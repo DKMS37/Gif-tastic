@@ -1,10 +1,10 @@
 // This is the array of the topics.
-var topics = ["rabbit", "cat", "hamster", "dog", "pigeon", "lion", "panda", "bear", "turtle", "tiger", "whale", "elephant", "racoon", "goat"];
+var topics = ["rabbit", "cat", "hamster", "dog", "pigeon", "lion", "panda", "bear", "turtle", "tiger", "elephant", "racoon"];
 // Function that renders the Html to diplay the Appropriate content.
 function displayGif() {
     var topic = $(this).attr("data-topic");
     // The query calls on the first ten results from the giphy api, and also storing our giphy API URL.
-    var queryUrl = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=5ffwOLmeVyAVhjajRATByebPgTsf0p7W&limit=10";
+    var queryUrl = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=5ffwOLmeVyAVhjajRATByebPgTsf0p7W&limit=15";
     // Perfoming an AJAX GET request to our queryURL.
     $.ajax({
         url: queryUrl,
@@ -17,9 +17,9 @@ function displayGif() {
             // Looping to go through all ten result.
             for (var i = 0; i < results.length; i++) {
                 // Creating a paragraph tag with the result item's rating.
-                var p = $("<h5>").text("Rated: " + results[i].rating);
+                var p = $("<h4>").text("rated: " + results[i].rating);
                 // Creating and storing a div tag.
-                var topicsDiv = $("<div class= 'col-md-2 img-fluid pull-left text-center'>");
+                var topicsDiv = $("<div>");
                 // Creating and storing an image tag.
                 var topicImage = $("<img>");
                 // Setting the topicImage src attribute to imageUrl.
